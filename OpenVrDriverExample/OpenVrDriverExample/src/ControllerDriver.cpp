@@ -37,15 +37,20 @@ EVRInitError ControllerDriver::Activate(uint32_t unObjectId)
 DriverPose_t ControllerDriver::GetPose()
 {
 	DriverPose_t pose = { 0 }; //This example doesn't use Pose, so this method is just returning a default Pose.
-	pose.poseIsValid = false;
-	pose.result = TrackingResult_Calibrating_OutOfRange;
+	pose.poseIsValid = true;
+	pose.result = TrackingResult_Running_OK;
 	pose.deviceIsConnected = true;
+	
+	float value = 100.0f / (float)(rand() % 100); 
+	pose.vecPosition[0] = value;
+	pose.vecPosition[1] = 1;
+	pose.vecPosition[2] = 1;
 
 	HmdQuaternion_t quat;
-	quat.w = 1;
 	quat.x = 0;
 	quat.y = 0;
 	quat.z = 0;
+	quat.w = 1;
 
 	pose.qWorldFromDriverRotation = quat;
 	pose.qDriverFromHeadRotation = quat;
@@ -56,7 +61,9 @@ DriverPose_t ControllerDriver::GetPose()
 void ControllerDriver::RunFrame()
 {
 	//Since we used VRScalarUnits_NormalizedTwoSided as the unit, the range is -1 to 1.
-	VRDriverInput()->UpdateScalarComponent(joystickYHandle, 0.100f, 0); //move forward
+
+	float value = 1.0f / (float)(rand() % 100);
+	VRDriverInput()->UpdateScalarComponent(joystickYHandle, value, 0); //move forward
 	VRDriverInput()->UpdateScalarComponent(trackpadYHandle, 0.95f, 0); //move foward
 	VRDriverInput()->UpdateScalarComponent(joystickXHandle, 0.0f, 0); //change the value to move sideways
 	VRDriverInput()->UpdateScalarComponent(trackpadXHandle, 0.0f, 0); //change the value to move sideways
