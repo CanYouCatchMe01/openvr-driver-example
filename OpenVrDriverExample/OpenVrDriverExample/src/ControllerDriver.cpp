@@ -56,7 +56,7 @@ DriverPose_t ControllerDriver::GetPose()
 void ControllerDriver::RunFrame()
 {
 	//Since we used VRScalarUnits_NormalizedTwoSided as the unit, the range is -1 to 1.
-	VRDriverInput()->UpdateScalarComponent(joystickYHandle, 0.95f, 0); //move forward
+	VRDriverInput()->UpdateScalarComponent(joystickYHandle, 0.100f, 0); //move forward
 	VRDriverInput()->UpdateScalarComponent(trackpadYHandle, 0.95f, 0); //move foward
 	VRDriverInput()->UpdateScalarComponent(joystickXHandle, 0.0f, 0); //change the value to move sideways
 	VRDriverInput()->UpdateScalarComponent(trackpadXHandle, 0.0f, 0); //change the value to move sideways

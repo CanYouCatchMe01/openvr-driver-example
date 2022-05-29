@@ -103,11 +103,15 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>include;$(IncludePath)</IncludePath>
+    <LibraryPath>lib;$(LibraryPath)</LibraryPath>
+    <TargetName>driver_example</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>include;$(IncludePath)</IncludePath>
     <LibraryPath>lib;$(LibraryPath)</LibraryPath>
+    <TargetName>driver_example</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -159,6 +163,13 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /Y "$(SolutionDir)$(Platform)\$(Configuration)\$(TargetName).dll" "$(SolutionDir)build\example\bin\win64\"
+xcopy /Y "$(ProjectDir)resources\driver.vrdrivermanifest" "$(SolutionDir)build\example\"
+xcopy /Y "$(ProjectDir)resources\controller_profile.json" "$(SolutionDir)build\example\resources\input\"
+xcopy /Y "$(ProjectDir)resources\legacy_bindings_example.json" "$(SolutionDir)build\example\resources\input\"
+xcopy /Y "$(ProjectDir)resources\game_controller.svg" "$(SolutionDir)build\example\resources\icons\"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
