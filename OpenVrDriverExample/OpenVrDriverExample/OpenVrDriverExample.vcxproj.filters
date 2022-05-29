@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="input">
+      <UniqueIdentifier>{24c86bdd-54be-4ef4-b0da-03df65e08a45}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\ControllerDriver.h">
@@ -45,12 +48,12 @@
   <ItemGroup>
     <None Include="include\openvr_api.cs" />
     <None Include="include\openvr_api.json" />
-    <None Include="resources\controller_profile.json">
-      <Filter>Resource Files</Filter>
+    <None Include="..\build\example\resources\input\controller_profile.json">
+      <Filter>input</Filter>
     </None>
-    <None Include="resources\game_controller.svg" />
-    <None Include="resources\legacy_bindings_example.json" />
-    <None Include="resources\driver.vrdrivermanifest" />
+    <None Include="..\build\example\resources\input\legacy_bindings_example.json">
+      <Filter>input</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Library Include="lib\openvr_api.lib" />
